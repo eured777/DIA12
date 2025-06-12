@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nossa História 💌</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', serif;
+    }
+
+    body, html {
+      height: 100%;
+      background: #000;
+    }
+
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(4px) brightness(0.5);
+    }
+
+    .carta-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+      width: 600px;
+      padding: 30px;
+      border-radius: 40px;
+      background-image: url('papel.jpg'); /* papel envelhecido */
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 25px rgba(255, 182, 193, 0.4);
+      border: 4px solid rgba(255, 192, 203, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+
+    .carta-texto {
+      font-size: 1.2rem;
+      color: #3a2d1a;
+      white-space: pre-wrap;
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .carta-container {
+        padding: 20px;
+      }
+
+      .carta-texto {
+        font-size: 1rem;
+      }
+    }
+
+    .btn-voltar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffb6c1;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: bold;
+      color: #4b1a1a;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(255, 182, 193, 0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      max-width: 220px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .btn-voltar:hover {
+      background-color: #ff82a9;
+    }
+
+    .hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      transform: rotate(45deg);
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -20px;
+        opacity: 0;
+        transform: translateX(0) rotate(45deg);
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        bottom: 100%;
+        transform: translateX(-50px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background">
+    <img src="fundo-romantico.jpg" alt="Fundo romântico" class="bg-image">
+  </div>
+
+  <div class="carta-container">
+    <div class="carta-texto" id="carta"></div>
+  </div>
+
+  <button class="btn-voltar" onclick="voltarMenu()">← Voltar para o Menu</button>
+
+  <div class="hearts-container"></div>
+
+  <script>
+    const texto = `Oi, meu amor 💖
+
+Queria te lembrar o quanto você é especial pra mim.
+Cada momento ao seu lado tem sido mágico, e meu coração
+se enche de gratidão por ter você comigo.
+
+Te amo mais do que palavras podem dizer. ✨`;
+
+    let i = 0;
+    const carta = document.getElementById("carta");
+
+    function escrever() {
+      if (i < texto.length) {
+        carta.innerHTML += texto.charAt(i);
+        i++;
+        setTimeout(escrever, 50);
+      }
+    }
+
+    escrever();
+
+    function criarCoracao() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.querySelector(".hearts-container").appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    setInterval(criarCoracao, 600);
+
+    function voltarMenu() {
+      // Ajuste aqui o caminho do seu menu
+      window.location.href = "menu.html";
+    }
+  </script>
+
+</body>
+</html>
+
