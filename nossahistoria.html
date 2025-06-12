@@ -114,6 +114,29 @@
       background-color: pink;
       border-radius: 50%;
     }
+    .btn-voltar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffb6c1;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: bold;
+      color: #4b1a1a;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(255, 182, 193, 0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      max-width: 220px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .btn-voltar:hover {
+      background-color: #ff82a9;
+    }
 
     .heart::before {
       top: -10px;
@@ -175,6 +198,7 @@
   </div>
 
   <div class="hearts-container"></div>
+  <button class="btn-voltar" onclick="voltarMenu()">← Voltar para o Menu</button>
 
   <script>
     let currentIndex = 0;
@@ -208,6 +232,11 @@
     }
 
     setInterval(createHeart, 500);
+
+    function voltarMenu() {
+      // Ajuste aqui o caminho do seu menu
+      window.location.href = "menu.html";
+    }
   </script>
 
 </body>
