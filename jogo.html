@@ -152,10 +152,12 @@
   </style>
 </head>
 <body>
+  
 
   <div class="background">
     <img src="sua-imagem.jpg" alt="Fundo romântico" class="bg-image">
   </div>
+  
 
   <div class="game-container" id="game"></div>
 
@@ -163,12 +165,12 @@
 
   <script>
     const imagens = [
-      'foto1.jpg',
-      'foto2.jpg',
-      'foto3.jpg',
-      'foto4.jpg',
-      'foto5.jpg',
-      'foto6.jpg'
+      'img01.jpg',
+      'img02.jpg',
+      'img03.jpg',
+      'img09.jpg',
+      'img08.jpg',
+      'img07.jpg'
     ];
 
     let cards = [...imagens, ...imagens];
@@ -211,7 +213,7 @@
 
             if (matched === imagens.length) {
               setTimeout(() => {
-                alert("Parabéns! Você encontrou todos os pares! 💞");
+                alert("Parabéns! Você encontrou todos os pares! te amooo 💞");
                 window.location.href = "menu.html"; // retorna para o menu
               }, 500);
             }
