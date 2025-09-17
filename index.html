@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nossos Momentos 💑</title>
+  <title>Nossa História 💌</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Georgia', serif;
     }
 
     body, html {
       height: 100%;
       background: #000;
-      overflow: hidden;
     }
 
     .background {
@@ -29,7 +28,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: blur(4px) brightness(0.6);
+      filter: blur(4px) brightness(0.5);
     }
 
     .carta-container {
@@ -70,56 +69,28 @@
       }
     }
 
-    .container {
-      position: absolute;
-      top: 50%;
+    .btn-voltar {
+      position: fixed;
+      bottom: 20px;
       left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      max-width: 600px;
-    }
-
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
-    }
-
-    .carousel-images {
-      display: flex;
-      transition: transform 1s ease;
-      width: 100%;
-    }
-
-    .carousel-images img {
-      width: 100%;
-      object-fit: cover;
-      border-radius: 20px;
-    }
-
-    .buttons {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      padding: 0 10px;
-    }
-
-    .arrow {
-      background-color: rgba(255, 105, 180, 0.7);
+      transform: translateX(-50%);
+      background-color: #ffb6c1;
       border: none;
-      color: white;
-      font-size: 2rem;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: bold;
+      color: #4b1a1a;
       cursor: pointer;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 4px 6px rgba(255, 182, 193, 0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      max-width: 220px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .btn-voltar:hover {
+      background-color: #ff82a9;
     }
 
     .hearts-container {
@@ -152,29 +123,6 @@
       background-color: pink;
       border-radius: 50%;
     }
-    .btn-voltar {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #ffb6c1;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 30px;
-      font-weight: bold;
-      color: #4b1a1a;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(255, 182, 193, 0.6);
-      transition: background-color 0.3s ease;
-      user-select: none;
-      max-width: 220px;
-      text-align: center;
-      z-index: 10;
-    }
-
-    .btn-voltar:hover {
-      background-color: #ff82a9;
-    }
 
     .heart::before {
       top: -10px;
@@ -201,19 +149,15 @@
         opacity: 0;
       }
     }
-
-    @media (max-width: 600px) {
-      .arrow {
-        font-size: 1.5rem;
-        width: 35px;
-        height: 35px;
-      }
-    }
   </style>
 </head>
 <body>
 
-   <div class="carta-container">
+  <div class="background">
+    <img src="fundo-romantico.jpg" alt="Fundo romântico" class="bg-image">
+  </div>
+
+  <div class="carta-container">
     <div class="carta-texto" id="carta"></div>
   </div>
 
@@ -221,44 +165,13 @@
 
   <div class="hearts-container"></div>
 
-  <div class="background">
-    
-    <img src="sua-imagem.jpg" alt="Fundo romântico" class="bg-image">
-  </div>
-
- 
-
-  <div class="container">
-    <div class="carousel">
-      <div class="carousel-images" id="carouselImages">
-        <img src="img01.jpg" alt="Momento 1">
-        <img src="img02.jpg" alt="Momento 2">
-        <img src="img03.jpg" alt="Momento 3">
-        <img src="img05.jpg" alt="Momento 4">
-        <img src="img06.jpg" alt="Momento 5">
-        <img src="img09.jpg" alt="Momento 6">
-      </div>
-      <div class="buttons">
-        <button class="arrow" onclick="prevSlide()">‹</button>
-        <button class="arrow" onclick="nextSlide()">›</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="hearts-container"></div>
-  <button class="btn-voltar" onclick="voltarMenu()">← Voltar para o Menu</button>
-
   <script>
-
-const texto = `Oi, meu amor 💖
-
-Já se acostuma que sempre vai ter um site, quem manda namorar um TI KKKK.
-
-Sabes o quanto meu sentimento por você é grande, hoje é apenas uma data mas eu queria deixar registrado o quanto cê me faz feliz.
-
-chegou na minha vida do nada e se mostrou ser do jeito que eu queria(até no estresse KKK), és uma menina ilumidada e sua alegria me alegra todos os dias. 
-
-Obrigado por tudo, te amooo muito!✨`;
+    const texto = `Oi Ana, infelizmente não tive a oportunidade de explicar tudo, não foi do jeito que eu queria, mas espero que algum dia você volte aqui nesse presente e leia tudo que eu quero te falar. Eu cheguei aquela decisão depois de pensar muito, nunca te pedi nada de mais, só queria que você fosse aquela garota que eu conheci, a mesma garota que me fez apaixonar e deixar tudo de lado, no momento que te conheci eu deixei de pensar em mim e comecei a pensar em nós como um conjunto, muitas das vezes eu vi que não vinha das duas partes, talvez faltou apenas demostrar, me dizer que eu era prioridade por que eu precisava sentir isso também. Corri atrás por que como eu sempre lhe falei que eu queria que fosse vc, queria que fosse a gente, por isso tomei essa decisão, não sei se foi duvida sua ou apenas não me queria mesmo, mas era só me falar, talvez eu fosse digerir melhor, vc sempre foi minha prioridade, acima de qualquer outro, se eu tivesse ocupado eu dava um jeito e ia te ver, talvez foi ai que eu me perdi. Não vou te mentir, nunca me apaixonei assim, nunca trouxe ninguém aqui em casa, nunca trouxe ninguém pra dormir aqui, nunca pensei em casar e morar com alguém, foi a primeira em tudo. Enfim, no final faltou aquilo que eu sempre lhe pedi, conversa, me fala o que sente, o que tá acontecendo, o que tá lhe afetando, eu ia te ajudar!!
+Quando vc se afastava de mim e começava a fazer as coisas que eu não gostava parecia que era punição, mas o por que de me punir ao invez de resolver cmg? isso q eu nunca entendi.
+Quero que saiba que eu fui verdadeiro, eu tô levando do jeito que dá, queria você aqui do meu lado, talvez vc nunca leia isso, mas eu precisava escrever ou pelo menos tentar.
+Obrigado por tudo, vou ficar bem. Se um dia chegar a ler quero que saiba que eu te amo e lhe espero, ainda quero nosso cantindo e um mlk nosso, não guardo rancor e nem magua, apenas se estiver disposta a conversar e tentar de novo, por que eu sempre vou está.
+enfim, é isso 
+falei e falo, te amo Ana, desejo sucesso e que Deus te abençoe.`;
 
     let i = 0;
     const carta = document.getElementById("carta");
@@ -286,42 +199,10 @@ Obrigado por tudo, te amooo muito!✨`;
 
     function voltarMenu() {
       // Ajuste aqui o caminho do seu menu
-      window.location.href = "menu.html";
+      window.location.href = "nossahistoria.html";
     }
-
-    let currentIndex = 0;
-    const images = document.querySelectorAll("#carouselImages img");
-    const total = images.length;
-    const carousel = document.getElementById("carouselImages");
-
-    function updateCarousel() {
-      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % total;
-      updateCarousel();
-    }
-
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + total) % total;
-      updateCarousel();
-    }
-
-    setInterval(nextSlide, 4000); // troca automática a cada 4 segundos
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-      document.querySelector(".hearts-container").appendChild(heart);
-      setTimeout(() => heart.remove(), 7000);
-    }
-
-    setInterval(createHeart, 500);
-
   </script>
 
 </body>
 </html>
+
