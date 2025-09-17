@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quando Tudo Começou 💖</title>
+  <title>Nossos Momentos 💑</title>
   <style>
     * {
       margin: 0;
@@ -14,8 +14,8 @@
 
     body, html {
       height: 100%;
+      background: #000;
       overflow: hidden;
-      background-color: #000;
     }
 
     .background {
@@ -26,11 +26,10 @@
     }
 
     .bg-image {
-      width: 130px;
-      height:150px;
-      border-radius: 10px;
-      border: solid 2px pink;
-      
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(4px) brightness(0.6);
     }
 
     .container {
@@ -38,63 +37,51 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      text-align: center;
-      color: #fff;
+      width: 90%;
+      max-width: 600px;
     }
 
-    h1 {
-      margin-bottom: 30px;
-      font-size: 2rem;
-    }
-    h5 {
-      margin-bottom: 30px;
-  
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
     }
 
-    .input-display {
+    .carousel-images {
       display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-      gap: 10px;
+      transition: transform 1s ease;
+      width: 100%;
     }
 
-    .digit-box {
-      width: 40px;
-      height: 50px;
-      border: 2px solid #fff;
-      border-radius: 8px;
-      font-size: 1.5rem;
-      text-align: center;
-      line-height: 50px;
+    .carousel-images img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 20px;
     }
 
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(3, 60px);
-      gap: 15px;
-      justify-content: center;
-      margin-top: 10px;
+    .buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 10px;
     }
 
-    .key {
-      width: 60px;
-      height: 60px;
-      background-color: #ff69b4;
-      color: white;
-      font-size: 1.5rem;
+    .arrow {
+      background-color: rgba(255, 105, 180, 0.7);
       border: none;
-      border-radius: 10px;
+      color: white;
+      font-size: 2rem;
       cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .key:hover {
-      background-color: #ff85c1;
-    }
-
-    #error-message {
-      color: #ffb3c6;
-      margin-top: 15px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hearts-container {
@@ -127,6 +114,29 @@
       background-color: pink;
       border-radius: 50%;
     }
+    .btn-voltar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffb6c1;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: bold;
+      color: #4b1a1a;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(255, 182, 193, 0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      max-width: 220px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .btn-voltar:hover {
+      background-color: #ff82a9;
+    }
 
     .heart::before {
       top: -10px;
@@ -153,94 +163,64 @@
         opacity: 0;
       }
     }
+
+    @media (max-width: 600px) {
+      .arrow {
+        font-size: 1.5rem;
+        width: 35px;
+        height: 35px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="background">
-    <!-- Substitua por sua imagem -->
-    <img src="img04.jpg" alt="Foto do casal" class="bg-image">
+    <!-- Pode usar uma imagem de fundo suave -->
+    <img src="sua-imagem.jpg" alt="Fundo romântico" class="bg-image">
   </div>
 
   <div class="container">
-    <img src="img04.jpg" alt="img04" class="bg-image">
-    <h1>informe a Senha:</h1>
-    <h5>dica: dia que a gente se viu pela primeira vez!💘</h5>
-
-    <div class="input-display" id="display">
-      <div class="digit-box"></div>
-      <div class="digit-box"></div>
-      <div class="digit-box"></div>
-      <div class="digit-box"></div>
-      <div class="digit-box"></div>
-      <div class="digit-box"></div>
+    <div class="carousel">
+      <div class="carousel-images" id="carouselImages">
+        <img src="img01.jpg" alt="Momento 1">
+        <img src="img02.jpg" alt="Momento 2">
+        <img src="img03.jpg" alt="Momento 3">
+        <img src="img05.jpg" alt="Momento 4">
+        <img src="img06.jpg" alt="Momento 5">
+        <img src="img09.jpg" alt="Momento 6">
+      </div>
+      <div class="buttons">
+        <button class="arrow" onclick="prevSlide()">‹</button>
+        <button class="arrow" onclick="nextSlide()">›</button>
+      </div>
     </div>
-
-    <div class="keypad">
-      <button class="key" onclick="addDigit('1')">1</button>
-      <button class="key" onclick="addDigit('2')">2</button>
-      <button class="key" onclick="addDigit('3')">3</button>
-      <button class="key" onclick="addDigit('4')">4</button>
-      <button class="key" onclick="addDigit('5')">5</button>
-      <button class="key" onclick="addDigit('6')">6</button>
-      <button class="key" onclick="addDigit('7')">7</button>
-      <button class="key" onclick="addDigit('8')">8</button>
-      <button class="key" onclick="addDigit('9')">9</button>
-      <button class="key" onclick="clearLast()">←</button>
-      <button class="key" onclick="addDigit('0')">0</button>
-      <button class="key" onclick="clearAll()">C</button>
-    </div>
-
-    <p id="error-message"></p>
   </div>
 
   <div class="hearts-container"></div>
+  <button class="btn-voltar" onclick="voltarMenu()">← Voltar para o Menu</button>
 
   <script>
-    const correctPassword = "180125";
-    let input = "";
+    let currentIndex = 0;
+    const images = document.querySelectorAll("#carouselImages img");
+    const total = images.length;
+    const carousel = document.getElementById("carouselImages");
 
-    function updateDisplay() {
-      const boxes = document.querySelectorAll(".digit-box");
-      boxes.forEach((box, i) => {
-        box.textContent = input[i] || "";
-      });
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
-    function addDigit(d) {
-      if (input.length < 6) {
-        input += d;
-        updateDisplay();
-
-        if (input.length === 6) {
-          checkPassword();
-        }
-      }
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % total;
+      updateCarousel();
     }
 
-    function clearLast() {
-      input = input.slice(0, -1);
-      updateDisplay();
-      document.getElementById("error-message").textContent = "";
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + total) % total;
+      updateCarousel();
     }
 
-    function clearAll() {
-      input = "";
-      updateDisplay();
-      document.getElementById("error-message").textContent = "";
-    }
-
-    function checkPassword() {
-      const msg = document.getElementById("error-message");
-      if (input === correctPassword) {
-        alert("Senha correta! ❤️ Indo para a próxima etapa...");
-        // Redireciona se quiser:
-      window.location.href = "menu.html";
-      } else {
-        msg.textContent = "Dá teus pulos para lembra dona bonita, hummm";
-        setTimeout(clearAll, 1500);
-      }
-    }
+    setInterval(nextSlide, 4000); // troca automática a cada 4 segundos
 
     function createHeart() {
       const heart = document.createElement("div");
@@ -252,6 +232,11 @@
     }
 
     setInterval(createHeart, 500);
+
+    function voltarMenu() {
+      // Ajuste aqui o caminho do seu menu
+      window.location.href = "menu.html";
+    }
   </script>
 
 </body>
